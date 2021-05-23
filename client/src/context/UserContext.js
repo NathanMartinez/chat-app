@@ -3,14 +3,8 @@ import React, { useState, useContext } from 'react'
 const UserContext = React.createContext()
 
 const initialState = {
-  socket_id: -1,
-  userName: 'dev',
-  messages: [{
-    id: 0,
-    text: 'Hello',
-    senders_socket_id: -2,
-    timestamp: Date.now(),
-  }],
+  socket_id: '',
+  username: 'dev'
 }
 
 export function useUserContext() {

@@ -1,18 +1,13 @@
-import { io } from "socket.io-client";
-import { useUserContext } from './context/UserContext'
-
-const socket = io("http://localhost:3001")
-
-socket.on("connect", () => {
-  console.log(socket.id); 
-});
+import Login from "./components/Login";
+import Messages from "./components/Messages";
+import { app } from "./context/firebase";
 
 function App() {
-  const [user, addUser] = useUserContext()
-
+  console.log(app);
   return (
     <div className="app">
-      {JSON.stringify(user)}
+      <Messages />
+      <Login />
     </div>
   );
 }
