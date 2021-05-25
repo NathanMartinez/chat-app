@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
 
 const useAuth = (email, password) => {
   const [user, setUser] = useState(null);
 
-  firebase
+  useEffect(() => {
+    firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
@@ -18,6 +19,7 @@ const useAuth = (email, password) => {
       let errorMessage = error.message;
       setUser(errorMessage);
     });
+  }, [])
 
   return user;
 };
