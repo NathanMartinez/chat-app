@@ -1,13 +1,14 @@
-import Login from "./components/Login";
+import { useState } from "react";
+import MessageInput from "./components/MessageInput";
 import Messages from "./components/Messages";
-import { app } from "./context/firebase";
 
 function App() {
-  console.log(app);
+  const [data, setData] = useState([]);
+
   return (
     <div className="app">
-      <Messages />
-      <Login />
+      <Messages data={data} />
+      <MessageInput setData={setData} />
     </div>
   );
 }

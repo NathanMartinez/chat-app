@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
+import moment from "moment";
 
-export default function Login() {
+export default function MessageInput({ setData }) {
   const [text, setText] = useState("");
 
   const handleChange = (e) => {
@@ -11,7 +12,16 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(text);
+    setData((prev) => [
+      ...prev,
+      {
+        message_id: 0,
+        sender_id: 1,
+        sender_name: "Nate",
+        message_text: text,
+        datetime: moment().format(),
+      },
+    ]);
   };
 
   return (
@@ -21,6 +31,7 @@ export default function Login() {
         type="text"
         value={text}
         onChange={handleChange}
+        autoComplete="off"
       />
       <input id="message__submit" type="submit" onClick={handleSubmit} />
     </MessageForm>

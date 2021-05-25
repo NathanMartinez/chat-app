@@ -1,8 +1,16 @@
 import styled from "styled-components";
 import Message from "./Message";
 
-export default function Messages() {
-  return <MessageContainer></MessageContainer>;
+export default function Messages({ data }) {
+  const result = data.map((msg) => {
+    return (
+      <Message
+        key={msg.message_id}
+        text={msg.message_text}
+      />
+    );
+  });
+  return <MessageContainer>{result}</MessageContainer>;
 }
 const MessageContainer = styled.div`
   flex: 1;
