@@ -12,6 +12,7 @@ export default function MessageInput({ setData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!text) return
     setData((prev) => [
       ...prev,
       {
@@ -22,6 +23,7 @@ export default function MessageInput({ setData }) {
         datetime: moment().format(),
       },
     ]);
+    setText("");
   };
 
   return (

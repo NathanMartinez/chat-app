@@ -1,4 +1,11 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+
+// Setting the auth functionality to a local emulator
+const auth = firebase.auth();
+auth.useEmulator("http://localhost:9099");
+
 const {
   REACT_APP_API_KEY,
   REACT_APP_AUTH_DOMAIN,
@@ -17,5 +24,6 @@ const firebaseConfig = {
   messagingSenderId: REACT_APP_MESSAGING_SENDER_ID,
   appId: REACT_APP_APP_ID,
 };
+
 // Initialize Firebase
-export const app = firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
